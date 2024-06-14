@@ -1,24 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import TaskList from "./components/TaskList";
+import TaskForm from "./components/TaskForm";
+import TaskDetail from "./components/TaskDetail";
+import { Home } from "./components/Home";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import "./App.css";
 
 function App() {
+  const [tasks, setTasks] = useState([]);
+  const [isAddingTask, setIsAddingTask] = useState(false);
+
+  useEffect(() => {
+    fetchTasks();
+  }, []);
+
+  const fetchTasks = () => {
+    axios
+      .get("https://task-manager-backend-b9m3.onrender.com/api/tasks")
+      .then((response) => setTasks(response.data))
+      .catch((error) => console.error("Error fetching tasks:", error));
+  };
+
+  const addTask = (task) => {
+    axios
+      .post("https://task-manager-backend-b9m3.onrender.com/api/tasks", task)
+      .then((response) => {
+        setTasks([...tasks, response.data]);
+        setIsAddingTask(false);
+      })
+      .catch((error) => console.error("Error adding task:", error));
+  };
+
+  const handleAddTaskClick = () => {
+    setIsAddingTask(true);
+  };
+
+  const handleCancelClick = () => {
+    setIsAddingTask(false);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/form" element={<TaskForm onSubmit={addTask} />} />
+        <Route path="/list" element={<TaskList />} />
+        <Route path="/task/:id" element={<TaskDetail />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
