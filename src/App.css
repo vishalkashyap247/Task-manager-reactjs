@@ -13,6 +13,151 @@
   align-items: center; */
 }
 
+/* home .js */
+/* ./src/components/Home.css */
+.home {
+  text-align: center;
+  margin-top: 50px;
+  font-family: Arial, sans-serif;
+}
+
+.home h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.home button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.home button:hover {
+  background-color: #0056b3;
+}
+
+.home hr {
+  margin: 30px 0;
+}
+
+.home ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.home ul li {
+  margin: 10px 0;
+  font-size: 1.2em;
+}
+
+.home p {
+  font-size: 1em;
+  margin: 10px 0;
+}
+
+.home a {
+  color: #007bff;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 1.1em;
+}
+
+.home a:hover {
+  text-decoration: underline;
+}
+
+/* TaskForm.js */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+.form label {
+  font-size: 1.2em;
+  margin-top: 10px;
+}
+
+.form input {
+  margin: 10px 0;
+  padding: 8px;
+  font-size: 1em;
+  width: 80%;
+  max-width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form button:hover {
+  background-color: #218838;
+}
+
+.form h1 {
+  margin-bottom: 20px;
+}
+
+.form p {
+  margin-top: 20px;
+  font-size: 1em;
+}
+
+/* TaskList.js */
+.task-list {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.task-item {
+  margin-bottom: 20px;
+}
+
+.task-description {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+.task-item h2 {
+  margin: 0;
+}
+
+.task-item p {
+  margin: 5px 0;
+}
+
+.task-item button {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.task-item button:hover {
+  background-color: #0056b3;
+}
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

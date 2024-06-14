@@ -4,12 +4,12 @@ import TaskList from "./components/TaskList";
 import TaskForm from "./components/TaskForm";
 import TaskDetail from "./components/TaskDetail";
 import { Home } from "./components/Home";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 function App() {
   const [tasks, setTasks] = useState([]);
-  const [isAddingTask, setIsAddingTask] = useState(false);
+  // const [isAddingTask, setIsAddingTask] = useState(false);
 
   useEffect(() => {
     fetchTasks();
@@ -27,28 +27,29 @@ function App() {
       .post("https://task-manager-backend-b9m3.onrender.com/api/tasks", task)
       .then((response) => {
         setTasks([...tasks, response.data]);
-        setIsAddingTask(false);
+        // setIsAddingTask(false);
       })
       .catch((error) => console.error("Error adding task:", error));
   };
 
-  const handleAddTaskClick = () => {
-    setIsAddingTask(true);
-  };
+  // const handleAddTaskClick = () => {
+  //   setIsAddingTask(true);
+  // };
 
-  const handleCancelClick = () => {
-    setIsAddingTask(false);
-  };
+  // const handleCancelClick = () => {
+  //   setIsAddingTask(false);
+  // };
 
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route exact path="/" element={<Home />}></Route>
         <Route path="/form" element={<TaskForm onSubmit={addTask} />} />
         <Route path="/list" element={<TaskList />} />
         <Route path="/task/:id" element={<TaskDetail />} />
+        <Route path="*" element={<Home />}></Route>
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
 
